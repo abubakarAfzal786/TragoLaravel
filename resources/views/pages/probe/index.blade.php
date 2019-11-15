@@ -70,7 +70,7 @@
                                             <td>{{$list->id}}</td>
                                             <td>{{$list->atiname->description}}</td>
                                             <td>{{$list->barcode}}</td>
-                                            <td>{{$list->calibrationExpireTime}}</td>
+                                            <td>{{date("d/m/Y H:i",strtotime($list->calibrationExpireTime))}}</td>
                                             <td>{{$list->usedFor}}</td>
                                             <td>
                                             <a class="" href="{{route('probe.edit' , $list->id)}}"><i class="feather icon-edit"></i></a>

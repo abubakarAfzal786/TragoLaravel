@@ -114,7 +114,7 @@ $update_device->settings_json=$settings;
      * @param  \App\Device  $device
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Device $device,$id)
+    public function destroy($id)
     {
         Device::where('id',$id)->update(['active'=>0]);
         // $device->delete();

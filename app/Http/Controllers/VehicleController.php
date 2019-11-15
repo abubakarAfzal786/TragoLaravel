@@ -109,10 +109,12 @@ class VehicleController extends Controller
      * @param  \App\Vehicle  $vehicle
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Vehicle $vehicle)
+    public function destroy($id)
     {
         // dd($vehicle);
-        $vehicle->delete();
+        // $vehicle->delete();
+        // dd($id);
+        Vehicle::where('id',$id)->update(['active'=>0]);
         return redirect('/vehicles');
     }
 }

@@ -52,13 +52,13 @@
                                         <th> <a href="#">Calendario Settimanale </a>  </th>
                                         <th> <a href="#">Vincolo Temp. </a> </th>
                                         <th> <a href="#">Tappe </a> </th>
-                                        <th>  <a href="#">Variazioni Pianificate</a></th>
+                                        {{-- <th>  <a href="#">Variazioni Pianificate</a></th> --}}
                                         <th> 	<a>Azioni </a> </th>
 
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    <@foreach($plan as $request)
+                                    @foreach($plan as $request)
                                     <tr>
                                         <td>{{$request->id}}</td>
                                         <td>{{$request->ati->description}}</td>
@@ -70,8 +70,11 @@
                                                            
                
                                                            
-                                      
+                                      @if($request->plansCustoms)
                                         <td>{{$request->plansCustoms}}</td>
+                                        @else
+                                        <td>N\A</td>
+                                        @endif
                                         <td>
                                             <a href="{{route('plans.edit',$request->id)}}" class=""><i
                                                 class="feather icon-edit" vx-tooltip

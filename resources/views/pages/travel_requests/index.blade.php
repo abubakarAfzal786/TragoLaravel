@@ -30,7 +30,7 @@
         </div>
     </div>
     <!-- Zero configuration table -->
-    <section id="basic-datatable">
+    <section>
         <div class="row">
             <div class="col-12">
                 <div class="card">
@@ -43,7 +43,7 @@
                         <div class="card-body card-dashboard">
                             <p class="card-text">Gestione urgenti, programmate ed in pronta disponibilità</p>
                             <div class="table-responsive">
-                                <table class="table table-sm zero-configuration">
+                                <table class="table table-sm">
                                     <thead>
                                     <tr>
                                         <th><a href="#">Id </a></th>
@@ -111,7 +111,12 @@
                                             <td>{{$request->indirizzo_scarico}}</td>
                                             <td>{{$request->cdcs->description}}</td>
                                             <td>{{$request->indirizzo_carico}}</td>
+                                            @if(!empty($request->cdcs->description))
                                             <td>{{$request->cdcs->description}}</td>
+                                            @else
+                                            <td>N/A</td>
+                                            @endif
+                                          
                                             <td>
                                                 <a href="{{route('travel_requests.edit',$request->id)}}" class=""><i
                                                             class="feather icon-edit" vx-tooltip
@@ -133,6 +138,19 @@
                             </div>
                         </div>
                     </div>
+                    @if(!empty($travelRequest))
+                    <div class="row" style="padding: 10px;  margin: auto;">
+                       <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                           <ul class="pagination">
+                               
+                                   
+                              
+                                   </li>{!! $travelRequest->render() !!}</li>
+                              
+                           </ul>
+                       </div>
+                   </div>
+                   @endif
                 </div>
             </div>
         </div>

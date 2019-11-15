@@ -143,9 +143,9 @@ return redirect()->back();
      * @param  \App\TravelRequest $travelRequest
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Request $request, TravelRequest $travelRequest)
+    public function destroy($id)
     {
-        $travelRequest->delete();
+        TravelRequest::where('id',$id)->update(['active'=>0]);
         return redirect()->back();
     }
 }

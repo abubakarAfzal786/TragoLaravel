@@ -67,13 +67,13 @@
                                         <td>{{$request->agent->description}}</td>
                                         @endif
                                         <td>{{$request->sanifications->description}}</td>
-                                        <td>{{$request->time}}</td>
+                                        <td>{{date('d/m/Y H:i',strtotime($request->time))}}</td>
                                         <td>
                                             <a href="{{route('maintenance.edit',$request->id)}}" class=""><i
                                                 class="feather icon-edit" vx-tooltip
                                                 title="Modifica"></i></a>
                                     <form class="travelrequestform"
-                                          action="{{ route('maintenance.destroy', $request->id)}}"
+                                          action="{{ route('maintenance.destroy',$request->id)}}"
                                           method="post">
                                         @csrf
                                         @method('DELETE')

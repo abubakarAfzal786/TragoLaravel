@@ -98,9 +98,9 @@ class EquipmentController extends Controller
      * @param  \App\Equipment  $equipment
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Equipment $equipment)
+    public function destroy($equipment)
     {
-        $equipment->delete();
+        Equipment::where('id',$equipment)->update(['active'=>0]);
         return redirect('equipment');
     }
 }

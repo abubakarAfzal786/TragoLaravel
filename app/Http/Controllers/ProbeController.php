@@ -99,10 +99,10 @@ class ProbeController extends Controller
      * @param  \App\Probe  $probe
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Probe $probe)
+    public function destroy($probe)
     {
         // dd($probe);
-        $probe->delete();
+        Probe::where('id',$probe)->update(['active'=>0]);
         return redirect('/probe');
     }
 }

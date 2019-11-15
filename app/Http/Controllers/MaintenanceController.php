@@ -109,7 +109,7 @@ $maintenance=Maintenance::find($id);
      * @param  \App\Maintenance  $maintenance
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Maintenance $maintenance,$id)
+    public function destroy($id)
     {
         Maintenance::where('id',$id)->update(['active'=>0]);
         return redirect()->back();

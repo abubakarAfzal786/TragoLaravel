@@ -123,7 +123,7 @@ $updateObj->places_json=$places_json;
      * @param  \App\PlanRequest  $planRequest
      * @return \Illuminate\Http\Response
      */
-    public function destroy(PlanRequest $planRequest,$id)
+    public function destroy($id)
     {
         PlanRequest::where('id',$id)->update(['active'=>0]);
         // $planRequest->delete();

@@ -106,7 +106,7 @@ $plan=Plan::find($id);
      * @param  \App\Plan  $plan
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Plan $plan,$id)
+    public function destroy($id)
     {
         Plan::where('id',$id)->update(['active'=>0]);
         return redirect()->back();
