@@ -102,36 +102,58 @@
                                                 
                                                 {{ $request->planCustom->id . ' | ' . $request->planCustom->description }}
                                             </td>
+                                            @else
+                                            <td>N/A</td>
                                             @endif
                                             <td>{{ date("d/m/Y H:i", strtotime($request->data_ora_viaggio_dal)) }}</td>
                                             <td>{{ date("d/m/Y H:i", strtotime($request->data_ora_viaggio_al)) }}</td>
                                             <td> @if(isset($request->transportationType->id)) {{ $request->transportationType->id . ' | ' . $request->transportationType->description }} @endif </td>
-                                            <td> @if(isset($request->cdcs->id)) {{ $request->cdcs->id . ' | ' . $request->cdcs->description }} @endif </td>
-                                            <td> @if(isset($request->address->id)) {{ $request->address->id . ' | ' . $request->address->description }} @endif </td>
+                                            <td> @if(isset($request->cdcs->id)) {{ $request->cdc_richiedente. ' | ' . $request->cdcs->description }} @endif </td>
+                                            <td> @if(isset($request->address->id)) {{ $request->codice_localita_carico . ' | ' . $request->address->description }} @endif </td>
                                             <td>{{$request->indirizzo_scarico}}</td>
                                             <td>{{$request->cdcs->description}}</td>
+                                           
                                             <td>{{$request->indirizzo_carico}}</td>
-                                            @if(!empty($request->cdcs->description))
+                                        
+                                            
                                             <td>{{$request->cdcs->description}}</td>
-                                            @else
-                                            <td>N/A</td>
-                                            @endif
+                                         
                                           
                                             <td>
                                                 <a href="{{route('travel_requests.edit',$request->id)}}" class=""><i
                                                             class="feather icon-edit" vx-tooltip
                                                             title="Modifica"></i></a>
-                                                <form class="travelrequestform"
-                                                      action="{{ route('travel_requests.destroy', $request->id)}}"
-                                                      method="post">
-                                                    @csrf
-                                                    @method('DELETE')
-                                                    <button type="submit" class="fabutton"><i class="feather icon-trash"></i></button>
+                                                
+                                                    
+                                                <button class="fabutton"  data-toggle="modal" data-target="#confirm-delete{{$request->id}}">
+                                                        <i class="feather icon-trash"></i>
+                                                    </button>
 
-                                                </form>
+                                               
 
                                             </td>
                                         </tr>
+                                    <div class="modal fade" id="confirm-delete{{$request->id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        {{$request->id}}
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <form class="travelrequestform" action="{{ route('travel_requests.destroy', $request->id)}}" method="post">
+                                                            @csrf
+                                                    @method('DELETE')
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                           
+                                                            <button type="submit" class="btn btn-danger btn-ok">Delete</button>
+                                                        </form>
+                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                                    </div>
+                                               
+                                                </div>
+                                            </div>
+                                        </div>
                                     @endforeach
                                     </tfoot>
                                 </table>

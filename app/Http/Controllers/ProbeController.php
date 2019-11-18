@@ -12,7 +12,7 @@ class ProbeController extends Controller
     public function index()
     {
         $data = [];
-        $data['listing'] = \App\Probe::paginate(20);
+        $data['listing'] = \App\Probe::where('active',1)->paginate(20);
         return view('pages.probe.index' , $data);
     }
     /**

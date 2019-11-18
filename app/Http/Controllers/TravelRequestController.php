@@ -81,7 +81,7 @@ $travel->confezionato=request('confezionato');
 $travel->numero_colli=request('numero_colli');
 $travel->note=request('note');
 $travel->save();
-return redirect()->back();
+return redirect('travel_requests');
 
 
     }

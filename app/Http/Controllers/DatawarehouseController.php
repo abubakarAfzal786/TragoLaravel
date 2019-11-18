@@ -15,7 +15,7 @@ class datawarehouseController extends Controller
     public function index()
     {
         $data = [];
-        $data['data1'] = \App\Datawarehouse::where('active', '!=', 0)->orderBy('id','desc')->paginate(20);
+        $data['data1'] = \App\Datawarehouse::where('active', 1)->orderBy('id','desc')->paginate(20);
         return view('pages.datawarehouse.index' , $data);
 
     }

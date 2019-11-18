@@ -15,7 +15,7 @@ class TransactionController extends Controller
     public function index()
     {
         $data = [];
-        $data['trans'] = \App\Transaction::where('active' , '!=' , 0)->paginate(20);
+        $data['trans'] = \App\Transaction::where('active',1)->paginate(20);
         return view('pages.transaction.index',$data);
 
     }

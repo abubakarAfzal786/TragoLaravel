@@ -222,7 +222,7 @@
                         <label class="control-label col-sm-4 text-right font-weight-bold" for="crud-numero_colli">Numero
                             Colli</label>
                         <div class="col-sm-8" id="wrap-numero_colli">
-                            <input name="numero_colli" type="text" class="form-control input-sm" value=""
+                            <input name="numero_colli" type="number" class="form-control input-sm" value=""
                                    placeholder="Numero Colli">
                         </div>
                     </div>

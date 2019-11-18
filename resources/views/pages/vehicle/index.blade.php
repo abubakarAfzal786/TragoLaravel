@@ -76,17 +76,34 @@
 
                                         <td>
                                             <a class="" href="{{route('vehicles.edit' , $value->id)}}"><i class="feather icon-edit"></i></a>
-                                            <form action="{{route('vehicles.destroy' , $value->id)}}" method="POST">
-                                                @csrf
-                                                @method('DELETE')
-                                                <input type="hidden" name="id" value="{{$value->id}}">
-                                           <button type="submit" class="fabutton"><i class="feather icon-trash"></i></button>
-
-                                                
-                                            </form>
+                                            <button class="fabutton"  data-toggle="modal" data-target="#confirm-delete{{$value->id}}">
+                                                    <i class="feather icon-trash"></i>
+                                                </button>
                                            <!--  <a class=""><i class="feather icon-trash"></i></a> -->
                                         </td>
                                     </tr>
+                                    <div class="modal fade" id="confirm-delete{{$value->id}}" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                       Do You Really Want to Delete?
+                                                    </div>
+                                                    <div class="modal-body">
+                                                            <form action="{{route('devices.destroy', $value->id)}}" method="POST">
+                            
+                                                            @csrf
+                                                    @method('DELETE')
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                           
+                                                            <button type="submit" class="btn btn-danger btn-ok">Delete</button>
+                                                        </form>
+                                                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                                                    </div>
+                                               
+                                                </div>
+                                            </div>
+                                        </div>
                                     @endforeach
 
                                     </tfoot>
