@@ -40,7 +40,19 @@
                     </div>
                     <div class="card-content">
                         <div class="card-body card-dashboard">
-                            <p class="card-text">Gestione del parco palmari</p>
+                            <div class="row">
+                                <p class="card-text col-sm-4">Gestione del parco palmari</p>
+                               <div class="col-sm-4"></div>
+                            <form action="{{url('device-search')}}" method="get">
+                            
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control"  name="name">
+                                    <div class="input-group-append">
+                            <button type="submit" class="btn btn-primay fabutton" style="background-color:#7367f0; color:white;"><i class="fa fa-search"></i></button>
+                                    </div>
+                                </div>
+                           </form>
+                            </div>
                             <div class="table-responsive">
                                 <table class="table table-sm">
                                     <thead>

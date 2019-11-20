@@ -29,7 +29,7 @@
         </div>
     </div>
     <!-- Zero configuration table -->
-    <section id="basic-datatable">
+    <section>
         <div class="row">
             <div class="col-12">
                 <div class="card">

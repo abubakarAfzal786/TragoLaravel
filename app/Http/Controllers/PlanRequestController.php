@@ -30,7 +30,20 @@ class PlanRequestController extends Controller
         return view('pages.plan_requests.index')->with('planRequest',$planRequest);
 
     }
-
+    public function search()
+    {
+        $name=request('name');
+        if($name)
+        {
+            $planRequest=PlanRequest::where('active',1)->where('id',$name)->orwhere('note','Like',$name.'%')->orderBy('id','desc')->paginate(10);
+    
+        }
+        else
+        {
+            return $this->index();
+        }
+        return view('pages.plan_requests.index')->with('planRequest',$planRequest);
+    }
     /**
      * Show the form for creating a new resource.
      *

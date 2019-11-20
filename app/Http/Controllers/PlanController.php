@@ -27,7 +27,20 @@ class PlanController extends Controller
         $plan=plan::where('active',1)->orderBy('id','desc')->paginate(10);
         return view('pages.plan.index')->with('plan',$plan);
     }
-
+    public function search()
+    {
+        $name=request('name');
+        if($name)
+        {
+            $plan=plan::where('id',$name)->where('active',1)->orwhere('temperatureConstraintId','Like',$name.'%')->orwhere('places_json',$name)->orwhere('weekdays_json','Like',$name.'%')->orwhere('note','Like',$name.'%')->orwhere('description',$name.'%')->orderBy('id','desc')->paginate(10);
+    
+        }
+        else
+        {
+            return $this->index();
+        }
+        return view('pages.plan.index')->with('plan',$plan);
+    }
     /**
      * Show the form for creating a new resource.
      *

@@ -18,6 +18,14 @@
   padding: 0px;
   border: none;
 }
+.dataTables_paginate
+{
+    display: none !important;
+}
+.paging_simple_numbers
+{
+    display: none !important;
+}
     </style>
     @include('partials.style')
     @yield('style')

@@ -47,9 +47,22 @@
 </div>
 <div class="card-content">
 <div class="card-body card-dashboard">
-<p class="card-text">Gestione del Datawarehouse</p>
+{{-- <p class="card-text"></p> --}}
+<div class="row">
+        <p class="card-text col-sm-4">Gestione del Datawarehouse</p>
+       <div class="col-sm-4"></div>
+    <form action="{{url('datawarehouse-search')}}" method="get">
+    
+        <div class="input-group mb-3">
+            <input type="text" class="form-control"  name="name">
+            <div class="input-group-append">
+    <button type="submit" class="btn btn-primay fabutton" style="background-color:#7367f0; color:white; padding:10px;"><i class="fa fa-search"></i></button>
+            </div>
+        </div>
+   </form>
+    </div>
 <div class="table-responsive">
-    <table class="table table-sm zero-configuration">
+    <table class="table table-sm">
         <thead>
         <tr>
             <th> <a href="#">ID </a>  </th>
@@ -118,7 +131,21 @@
     </table>
 </div>
 </div>
+
 </div>
+@if(!empty($data1))
+<div class="row" style="padding: 10px;  margin: auto;">
+   <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+       <ul class="pagination">
+           
+               
+          
+               </li>{!! $data1->render() !!}</li>
+          
+       </ul>
+   </div>
+</div>
+@endif
 </div>
 </div>
 </div>

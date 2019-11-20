@@ -19,7 +19,20 @@ class EquipmentController extends Controller
         return view('pages.equipment.index', $data);
 
     }
+public function search()
+{
+    $name=request('name');
+    if($name)
+    {
+        $data['equip']=\App\Equipment::where('active',1)->orwhere('id',$name)->orwhere('barcode','Like',$name.'%')->orwhere('sanificationIntervalDays','Like',$name.'%')->orderBy('id','desc')->paginate(10);
 
+    }
+    else
+    {
+        return $this->index();
+    }
+    return view('pages.equipment.index',$data);
+}
     /**
      * Show the form for creating a new resource.
      *

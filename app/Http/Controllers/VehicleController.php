@@ -17,6 +17,21 @@ class VehicleController extends Controller
         // dd($data['listing']);
         return view('pages.vehicle.index',$data);
     }
+    public function search()
+    {
+        $name=request('name');
+        if($name)
+        {
+            $data['listing']=\App\Vehicle::where('active',1)->where('id',$name)->orderBy('id','desc')->paginate(10);
+    
+        }
+        else
+        {
+            return $this->index();
+        }
+        return view('pages.vehicle.index',$data);
+
+    }
     /**
      * Show the form for creating a new resource.
      *

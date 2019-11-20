@@ -15,11 +15,24 @@ class TransactionController extends Controller
     public function index()
     {
         $data = [];
-        $data['trans'] = \App\Transaction::where('active',1)->paginate(20);
+        $data['trans'] = \App\Transaction::where('active' , '!=' , 0)->paginate(20);
         return view('pages.transaction.index',$data);
 
     }
-
+    public function search()
+    {
+        $name=request('name');
+        if($name)
+        {
+            $data['trans']=\App\Transaction::where('active',1)->where('id',$name)->orderBy('id','desc')->paginate(10);
+    
+        }
+        else
+        {
+            return $this->index();
+        }
+        return view('pages.transaction.index',$data);
+    }
     /**
      * Show the form for creating a new resource.
      *

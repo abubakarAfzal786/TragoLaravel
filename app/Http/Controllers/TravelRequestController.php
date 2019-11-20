@@ -28,7 +28,21 @@ class TravelRequestController extends Controller
        
         return view('pages.travel_requests.index')->with('travelRequest', $allTravelRequest);
     }
+    public function search()
+    {
+        $name=request('name');
+        if($name)
+        {
+            $allTravelRequest=\App\TravelRequest::where('active',1)->where('id',$name)->orderBy('id','desc')->paginate(10);
+    
+        }
+        else
+        {
+            return $this->index();
+        }
+        return view('pages.travel_requests.index')->with('travelRequest', $allTravelRequest);
 
+    }
     /**
      * Show the form for creating a new resource.
      *

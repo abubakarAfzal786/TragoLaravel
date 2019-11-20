@@ -20,6 +20,20 @@ class ProbeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function search()
+    {
+        $name=request('name');
+        if($name)
+        {
+            $data['listing']=\App\Probe::where('active',1)->where('id',$name)->orwhere('barcode',$name)->orderBy('id','desc')->paginate(10);
+    
+        }
+        else
+        {
+            return $this->index();
+        }
+        return view('pages.probe.index' , $data);
+    }
     public function create()
     {
         $data = [];

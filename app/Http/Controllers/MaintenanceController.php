@@ -27,7 +27,20 @@ class MaintenanceController extends Controller
         $maintenance=maintenance::where('active',1)->orderBy('id','desc')->paginate(10);
         return view('pages.maintenance.index')->with('maintenance',$maintenance);
     }
-
+    public function search()
+    {
+        $name=request('name');
+        if($name)
+        {
+            $maintenance=maintenance::where('active',1)->where('id',$name)->orderBy('id','desc')->paginate(10);
+    
+        }
+        else
+        {
+            return $this->index();
+        }
+        return view('pages.maintenance.index')->with('maintenance',$maintenance);
+    }
     /**
      * Show the form for creating a new resource.
      *

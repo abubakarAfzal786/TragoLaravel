@@ -19,7 +19,22 @@ class datawarehouseController extends Controller
         return view('pages.datawarehouse.index' , $data);
 
     }
+    public function search()
+    {
+        $name=request('name');
+        if($name)
+        {
+            $data['data1']=\App\Datawarehouse::where('active',1)->where('id',$name)->orderBy('id','desc')->paginate(10);
+    
+        }
+        else
+        {
+            return $this->index();
+        }
+        return view('pages.datawarehouse.index' , $data);
 
+
+    }
     /**
      * Show the form for creating a new resource.
      *

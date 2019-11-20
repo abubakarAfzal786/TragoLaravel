@@ -40,7 +40,20 @@
                     </div>
                     <div class="card-content">
                         <div class="card-body card-dashboard">
-                            <p class="card-text">Pianifica urgenti, programmate ed in pronta disponibilità</p>
+    
+                            <div class="row">
+                                <p class="card-text col-sm-4">Pianifica urgenti, programmate ed in pronta disponibilità</p>
+                               <div class="col-sm-4"></div>
+                            <form action="{{url('plan_requests-search')}}" method="get">
+                            
+                                <div class="input-group mb-3">
+                                    <input type="text" class="form-control"  name="name">
+                                    <div class="input-group-append">
+                            <button type="submit" class="btn btn-primay fabutton" style="background-color:#7367f0; color:white;"><i class="fa fa-search"></i></button>
+                                    </div>
+                                </div>
+                           </form>
+                            </div>
                             <div class="table-responsive">
                                 <table class="table table-sm">
                                     <thead>
