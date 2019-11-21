@@ -66,6 +66,8 @@
             <thead>
             <tr>
                 <th> <a href="#">Id </a>  </th>
+                <th><a href="#">Stato </a></th>
+
                 <th> <a href="#">Ati </a> </th>
                 <th>  <a href="#">Plan </a> </th>
                 <th> <a href="#">		Type</a> </th>
@@ -84,6 +86,11 @@
 
                     <tr>
                 <td>{{$val->id}}</td>
+                <td>
+                        
+                <span class="badge" style="background-color:{{$val->type->bgColor}}; color:{{$val->type->color}}"> {{$val->type->description}} </span>
+
+                    </td>
                 <td>{{$val->ati->description}}</td>
                 <td>{{$val->plan->description}}</td>
                 <td>{{$val->type->description}}</td>
